@@ -1,18 +1,11 @@
-version: "3.8"
+version: '3.8'
 
 services:
-  app:
+  web:
     build: .
     ports:
       - "8000:8000"
     volumes:
       - .:/app
-    depends_on:
-      - db
     environment:
-      - DATABASE_URL=sqlite:///./well_data.db
-
-  db:
-    image: sqlite:latest
-    volumes:
-      - ./well_data.db:/well_data.db
+      - PYTHONPATH=/app
